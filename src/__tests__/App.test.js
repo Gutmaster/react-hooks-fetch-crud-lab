@@ -82,9 +82,15 @@ test("updates the answer when the dropdown is changed", async () => {
 
   await screen.findByText(/lorem testum 2/g);
 
+
+  console.log("BEFORE", screen.queryAllByLabelText(/Correct Answer/)[0].value);
+
   fireEvent.change(screen.queryAllByLabelText(/Correct Answer/)[0], {
     target: { value: "3" },
   });
+
+  console.log("AFTER", screen.queryAllByLabelText(/Correct Answer/)[0].value);
+
 
   expect(screen.queryAllByLabelText(/Correct Answer/)[0].value).toBe("3");
 
